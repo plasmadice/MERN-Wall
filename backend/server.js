@@ -92,16 +92,6 @@ app.get("/success", (req, res) =>
 );
 app.get("/error", (req, res) => res.send("error logging in"));
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
-
-passport.deserializeUser(function(id, cb) {
-  User.findById(id, function(err, user) {
-    cb(err, user);
-  });
-});
-
 /* Express app ROUTING */
 app.use("/auth", require("./auth"));
 
