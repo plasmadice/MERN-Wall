@@ -6,6 +6,7 @@ import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import HomePage from "./components/HomePage";
 // import Database from "./components/Database";
 // import Basic from "./components/Basic";
 
@@ -137,6 +138,7 @@ class App extends Component {
         {/*  ROUTES */}
         {/* <Route exact path="/" component={Home} /> */}
         <Route exact path="/" render={() => <Home user={this.state.user} />} />
+        <Route exact path="/home" component={HomePage} />
         <Route
           exact
           path="/login"

@@ -5,18 +5,18 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 let MONGO_URL;
 const MONGO_LOCAL_URL =
-  "mongodb://haku:chocobo5@ds119044.mlab.com:19044/haku-node-test";
+  "mongodb+srv://haku:chocobo@cluster0-vbghb.mongodb.net/test?retryWrites=true";
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(
     process.env.MONGODB_URI,
-    { useNewUrlParser: true, useCreateIndex: true }
+    { dbName: "cluster0", useNewUrlParser: true, useCreateIndex: true }
   );
   MONGO_URL = process.env.MONGODB_URI;
 } else {
   mongoose.connect(
     MONGO_LOCAL_URL,
-    { useNewUrlParser: true, useCreateIndex: true }
+    { dbName: "cluster0", useNewUrlParser: true, useCreateIndex: true }
   ); // local mongo url
   MONGO_URL = MONGO_LOCAL_URL;
 }

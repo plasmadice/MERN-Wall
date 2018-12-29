@@ -48,7 +48,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // Models and Routes
 require("./models/Users");
 require("./config/passport");
-app.use(require("./routes"));
 
 // Configure mongoose
 const dbRoute =
