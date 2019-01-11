@@ -13,8 +13,7 @@ const userSchema = new Schema({
   },
   google: {
     googleId: { type: String, required: false }
-  },
-  photos: []
+  }
   // local: {
   // 	email: { type: String, unique: true },
   // 	password: { type: String }

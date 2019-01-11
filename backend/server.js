@@ -93,6 +93,7 @@ app.get("/error", (req, res) => res.send("error logging in"));
 
 /* Express app ROUTING */
 app.use("/auth", require("./auth"));
+app.use("/post", require("./post"));
 
 // ====== Error handler ====
 app.use(function(err, req, res, next) {

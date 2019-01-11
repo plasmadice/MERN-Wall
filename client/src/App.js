@@ -7,6 +7,7 @@ import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import HomePage from "./components/HomePage";
+import Post from "./components/Post";
 // import Database from "./components/Database";
 // import Basic from "./components/Basic";
 
@@ -73,7 +74,8 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      user: null
+      user: null,
+      posts: []
     };
     this._logout = this._logout.bind(this);
     this._login = this._login.bind(this);
@@ -93,6 +95,14 @@ class App extends Component {
           user: null
         });
       }
+    });
+
+    axios.get("/post/getposts").then(res => {
+      this.setState({
+        posts: res.data.allPosts
+      });
+      // TODO: remove this
+      console.log(this.state);
     });
   }
 
@@ -135,6 +145,12 @@ class App extends Component {
         <Header user={this.state.user} />
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+        {/* Posts */}
+        <ul>
+          {this.state.posts.map(post => {
+            return <Post post={post} key={post._id} />;
+          })}
+        </ul>
         {/*  ROUTES */}
         {/* <Route exact path="/" component={Home} /> */}
         <Route exact path="/" render={() => <Home user={this.state.user} />} />

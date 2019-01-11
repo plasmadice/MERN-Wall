@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   creator: { type: String, unique: false },
   content: { type: String, unique: false },
-  date: { type: Date, default: Date.now }
+  created: { type: Date, default: Date.now }
 });
 
 // Define schema methods
