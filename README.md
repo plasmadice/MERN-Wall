@@ -1,5 +1,7 @@
 TODO:
 Remove bootstrap link in public/index.html
+SWITCH TO FORMIK for forms
+.toLowerCase() on signup and login
 Clear commented code
 re-comment code
 

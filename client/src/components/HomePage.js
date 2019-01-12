@@ -1,18 +1,29 @@
 import React, { Component } from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import axios from "axios";
 
 export default class HomePage extends Component {
   render() {
     return (
       <div className="post-container">
-        <ul>
-          <li>Haku</li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
-            dicta nihil inventore aliquam iure asperiores placeat tempora nemo,
-            eos excepturi nesciunt adipisci natus eum iusto pariatur facilis
-            perspiciatis dolorum. Blanditiis.
-          </li>
-        </ul>
+        <Formik
+          initialValues={{ content: "words" }}
+          onSubmit={(values, actions) => {
+            console.log("Formik submitted", values.content);
+            axios
+              .post("/post/create", { content: values.content })
+              .then(console.log);
+          }}
+          render={({ errors, status, touched, isSubmitting }) => (
+            <Form>
+              <Field component="textarea" name="content" />
+              <ErrorMessage name="text" component="div" />
+              <button type="submit" disabled={isSubmitting}>
+                Submit
+              </button>
+            </Form>
+          )}
+        />
       </div>
     );
   }
