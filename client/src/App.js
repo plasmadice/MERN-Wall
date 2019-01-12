@@ -155,25 +155,30 @@ class App extends Component {
       <div className="App">
         <h1>This is the main App component</h1>
         <Header user={this.state.user} />
-        <Route exact path="/" render={() => <Home user={user} />} />
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
-        {/* Posts */}
-        <ul>
-          {posts.map(post => {
-            return (
-              <Post
-                user={user}
-                post={post}
-                key={post._id}
-                removePost={this.removePost}
-              />
-            );
-          })}
-        </ul>
-        {/* Create new posts */}
-        {loggedIn && <PostForm getPosts={this.getPosts} />}
         {/*  ROUTES */}
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <>
+              <Home user={user} />
+              <ul>
+                {posts.map(post => {
+                  return (
+                    <Post
+                      user={user}
+                      post={post}
+                      key={post._id}
+                      removePost={this.removePost}
+                    />
+                  );
+                })}
+              </ul>
+            </>
+          )}
+        />
         <Route
           exact
           path="/login"
@@ -185,6 +190,8 @@ class App extends Component {
           )}
         />
         <Route exact path="/signup" component={SignupForm} />
+        {/* Create new posts */}
+        {loggedIn && <PostForm getPosts={this.getPosts} />}
       </div>
     );
   }

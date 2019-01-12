@@ -29,7 +29,7 @@ export default class Post extends Component {
         Creator: {post.creator}
         Content: {post.content}
         Created: {post.created}
-        {post.creator === user._id ? (
+        {user && post.creator === user._id ? (
           <button onClick={this.handleClick}>Delete</button>
         ) : null}
       </li>
