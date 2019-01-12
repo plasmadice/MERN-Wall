@@ -6,7 +6,7 @@ import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import HomePage from "./components/HomePage";
+import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 // import Database from "./components/Database";
 // import Basic from "./components/Basic";
@@ -97,6 +97,10 @@ class App extends Component {
       }
     });
 
+    this.getPosts();
+  }
+
+  getPosts = () => {
     axios.get("/post/getposts").then(res => {
       this.setState({
         posts: res.data.allPosts
@@ -104,7 +108,7 @@ class App extends Component {
       // TODO: remove this
       console.log(this.state);
     });
-  }
+  };
 
   _logout(event) {
     event.preventDefault();
@@ -138,23 +142,38 @@ class App extends Component {
       });
   }
 
+  removePost = postId => {
+    this.setState(state => {
+      return { posts: state.posts.filter(post => post._id !== postId) };
+    });
+  };
+
   render() {
+    const { user, loggedIn, posts } = this.state;
+
     return (
       <div className="App">
         <h1>This is the main App component</h1>
         <Header user={this.state.user} />
+        <Route exact path="/" render={() => <Home user={user} />} />
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
         {/* Posts */}
         <ul>
-          {this.state.posts.map(post => {
-            return <Post post={post} key={post._id} />;
+          {posts.map(post => {
+            return (
+              <Post
+                user={user}
+                post={post}
+                key={post._id}
+                removePost={this.removePost}
+              />
+            );
           })}
         </ul>
+        {/* Create new posts */}
+        {loggedIn && <PostForm getPosts={this.getPosts} />}
         {/*  ROUTES */}
-        {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/" render={() => <Home user={this.state.user} />} />
-        <Route exact path="/home" component={HomePage} />
         <Route
           exact
           path="/login"
@@ -166,7 +185,6 @@ class App extends Component {
           )}
         />
         <Route exact path="/signup" component={SignupForm} />
-        {/* <LoginForm _login={this._login} /> */}
       </div>
     );
   }
