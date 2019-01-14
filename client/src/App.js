@@ -1,30 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link } from "react-router-dom";
-import "./App.css";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
-// import Database from "./components/Database";
-// import Basic from "./components/Basic";
-
-// const App = () => (
-//   // <Router>
-//   //   <div className="container">
-//   //     <Link to="/">
-//   //       <h1>Main Page</h1>
-//   //     </Link>
-//   //     <h2>Welcome, Guest</h2>
-//   //     {/* <Link to="/database">Database</Link> */}
-//   //     <Link to="/login">Login</Link>
-//   //     {/* <Route exact path="/database" component={Database} /> */}
-//   //     <Route exact path="/login" component={Basic} />
-//   //   </div>
-//   // </Router>
-// );
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
