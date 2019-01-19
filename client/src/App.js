@@ -7,49 +7,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
-
-const DisplayLinks = props => {
-  if (props.loggedIn) {
-    return (
-      <nav className="navbar">
-        <ul className="nav">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="#" className="nav-link" onClick={props._logout}>
-              Logout
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  } else {
-    return (
-      <nav className="navbar">
-        <ul className="nav">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              login
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signup" className="nav-link">
-              sign up
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-};
+import DisplayLinks from "./components/DisplayLinks";
 
 class App extends Component {
   constructor() {
@@ -59,8 +17,6 @@ class App extends Component {
       user: null,
       posts: []
     };
-    this._logout = this._logout.bind(this);
-    this._login = this._login.bind(this);
   }
   componentDidMount() {
     axios.get("/auth/user").then(response => {
@@ -87,12 +43,10 @@ class App extends Component {
       this.setState({
         posts: res.data.allPosts
       });
-      // TODO: remove this
-      console.log(this.state);
     });
   };
 
-  _logout(event) {
+  logOut = event => {
     event.preventDefault();
     console.log("logging out");
     axios.post("/auth/logout").then(response => {
@@ -104,9 +58,9 @@ class App extends Component {
         });
       }
     });
-  }
+  };
 
-  _login(username, password) {
+  logIn = (username, password) => {
     axios
       .post("/auth/login", {
         username,
@@ -122,7 +76,7 @@ class App extends Component {
           });
         }
       });
-  }
+  };
 
   removePost = postId => {
     this.setState(state => {
@@ -138,7 +92,10 @@ class App extends Component {
         <h1>This is the main App component</h1>
         <Header user={this.state.user} />
         {/* LINKS to our different 'pages' */}
-        <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+        <DisplayLinks
+          logOut={this.logOut.bind(this)}
+          loggedIn={this.state.loggedIn}
+        />
         {/*  ROUTES */}
         <Route
           exact
@@ -166,7 +123,7 @@ class App extends Component {
           path="/login"
           render={() => (
             <LoginForm
-              _login={this._login}
+              logIn={this.logIn.bind(this)}
               _googleSignin={this._googleSignin}
             />
           )}
