@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import DisplayLinks from "./components/DisplayLinks";
+import PostContainer from "./components/PostContainer";
 
 class App extends Component {
   constructor() {
@@ -22,7 +23,7 @@ class App extends Component {
     axios.get("/auth/user").then(response => {
       console.log(response.data);
       if (!!response.data.user) {
-        console.log("THERE IS A USER");
+        console.log(`User ${response.data.user.local.username} is logged in`);
         this.setState({
           loggedIn: true,
           user: response.data.user
@@ -103,7 +104,7 @@ class App extends Component {
           render={() => (
             <>
               <Home user={user} />
-              <ul>
+              {/* <ul>
                 {posts.map(post => {
                   return (
                     <Post
@@ -114,7 +115,19 @@ class App extends Component {
                     />
                   );
                 })}
-              </ul>
+              </ul> */}
+              <PostContainer>
+                {posts.map(post => {
+                  return (
+                    <Post
+                      user={user}
+                      post={post}
+                      key={post._id}
+                      removePost={this.removePost}
+                    />
+                  );
+                })}
+              </PostContainer>
             </>
           )}
         />

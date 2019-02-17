@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { ListGroupItem, Button } from "shards-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
 
 export default class Post extends Component {
   handleClick = () => {
@@ -25,14 +28,16 @@ export default class Post extends Component {
   render() {
     const { post, user } = this.props;
     return (
-      <li>
+      <ListGroupItem>
         Creator: {post.creator}
         Content: {post.content}
         Created: {post.created}
         {user && post.creator === user._id ? (
-          <button onClick={this.handleClick}>Delete</button>
+          <Button theme="secondary" onClick={this.handleClick}>
+            Delete
+          </Button>
         ) : null}
-      </li>
+      </ListGroupItem>
     );
   }
 }
