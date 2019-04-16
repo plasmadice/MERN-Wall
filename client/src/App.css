@@ -1,0 +1,30 @@
+.login-form-container,
+.signup-form-container,
+.post-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-controls {
+  width: 20vw;
+}
+
+.post-container {
+  display: flex;
+  justify-content: center;
+}
+
+.post-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-container textarea {
+  width: 30vw;
+  margin: 10px;
+}
+
+.post-button {
+  display: flex;
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
 
 class SignupForm extends Component {
   constructor() {
@@ -44,30 +45,41 @@ class SignupForm extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     }
     return (
-      <div className="SignupForm">
-        <h1>Signup form</h1>
-        <label htmlFor="username">Email Address: </label>
-        <input
-          type="text"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="confirmPassword">Confirm Password: </label>
-        <input
-          type="password"
-          name="confirmPassword"
-          value={this.state.confirmPassword}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleSubmit}>Sign up</button>
+      <div className="signup-form-container">
+        <Form className="form-controls">
+          <Form.Group>
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="confirmPassword"
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+            Sign Up
+          </Button>
+        </Form>
       </div>
     );
   }

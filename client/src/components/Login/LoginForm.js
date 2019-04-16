@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from "./google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
-import "./LoginForm.css";
 import { Form, Button } from "react-bootstrap";
 
 class LoginForm extends Component {
@@ -38,7 +37,7 @@ class LoginForm extends Component {
     } else {
       return (
         <div className="login-form-container">
-          <Form>
+          <Form className="form-controls">
             <Form.Group>
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -63,11 +62,11 @@ class LoginForm extends Component {
             <Button variant="primary" type="submit" onClick={this.handleSubmit}>
               Login
             </Button>
-          </Form>
-          {/* <a href="/auth/google">
+            {/* <a href="/auth/google">
             {<GoogleButton />}
             <img src={googleButton} alt="sign into Google Button" />
           </a> */}
+          </Form>
         </div>
       );
     }

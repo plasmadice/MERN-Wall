@@ -9,6 +9,7 @@ import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import DisplayLinks from "./components/DisplayLinks";
 import PostContainer from "./components/PostContainer";
+import "./App.css";
 
 class App extends Component {
   constructor() {
