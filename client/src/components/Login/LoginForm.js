@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from "./google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
 import "./LoginForm.css";
+import { Form, Button } from "react-bootstrap";
 
 class LoginForm extends Component {
   constructor() {
@@ -37,23 +38,32 @@ class LoginForm extends Component {
     } else {
       return (
         <div className="login-form-container">
-          <form className="login-form">
-            <label htmlFor="username">Username: </label>
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Password: </label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <button onClick={this.handleSubmit}>Login</button>
-          </form>
+          <Form>
+            <Form.Group>
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                name="username"
+                placeholder="enter username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="enter password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+              Login
+            </Button>
+          </Form>
           {/* <a href="/auth/google">
             {<GoogleButton />}
             <img src={googleButton} alt="sign into Google Button" />
