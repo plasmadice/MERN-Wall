@@ -1,28 +1,18 @@
-import React from 'react'
+import React from "react";
 // TODO - add proptypes
 
 const Header = props => {
-	let Greeting
-	if (props.user === null) {
-		Greeting = <p>Hello guest</p>
-	} else if (props.user.firstName) {
-		Greeting = (
-			<p>
-				Welcome back, <strong>{props.user.firstName}</strong>
-			</p>
-		)
-	} else if (props.user.local.username) {
-		Greeting = (
-			<p>
-				Welcome back, <strong>{props.user.local.username} </strong>
-			</p>
-		)
-	}
-	return (
-		<div className="Header">
-			{Greeting}
-		</div>
-	)
-}
+  // conditional rendering on header
+  return (
+    <div className="site-greeting">
+      {(props.user === null && <p>Hello guest, sign up to post</p>) ||
+        (props.user.local.username && (
+          <p>
+            Welcome back, <strong>{props.user.local.username} </strong>
+          </p>
+        ))}
+    </div>
+  );
+};
 
-export default Header
+export default Header;

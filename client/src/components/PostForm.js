@@ -5,38 +5,28 @@ import { Button } from "react-bootstrap";
 
 export default class PostForm extends Component {
   render() {
+    const { user } = this.props;
     return (
-      <div className="post-container">
+      <div className="post-form-container">
         <Formik
           onSubmit={(values, actions) => {
-            console.log("Formik submitted", values.content);
+            // console.log("Formik submitted", values.content);
             axios
-              .post("/post/create", { content: values.content })
+              .post("/post/create", {
+                content: values.content,
+                username: user.local.username
+              })
               .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.props.getPosts();
               });
           }}
           render={({ errors, status, touched, isSubmitting }) => (
-            <Form
-              style={
-                {
-                  // display: "flex",
-                  // flexDirection: "column",
-                  // margin: "10px"
-                }
-              }
-            >
+            <Form>
               <Field
                 component="textarea"
                 name="content"
                 placeholder="Create a post"
-                style={
-                  {
-                    // borderRadius: "5px",
-                    // margin: "5px"
-                  }
-                }
               />
               <ErrorMessage name="text" component="div" />
               <div className="post-button">

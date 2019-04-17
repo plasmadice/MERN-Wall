@@ -3,6 +3,43 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  min-height: 500px;
+}
+
+@media only screen and (min-width: 600px) {
+  .App,
+  .form-controls {
+    width: 70vw;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .post-form-container form textarea {
+      width: 60vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .App,
+  .form-controls {
+    width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .App,
+  .form-controls {
+    width: 30vw;
+  }
+}
+
+.site-header,
+.site-greeting {
+  text-align: center;
+}
+
+.site-header {
+  margin-top: 3vh;
 }
 
 .login-form-container,
@@ -12,26 +49,48 @@
   justify-content: center;
 }
 
-.form-controls {
-  width: 20vw;
-}
-
-.post-container {
+.post-form-container {
   display: flex;
   justify-content: center;
 }
 
-.post-container form {
+.post-form-container form {
   display: flex;
   flex-direction: column;
 }
 
-.post-container textarea {
+.post-form-container textarea {
   width: 30vw;
   margin: 10px;
+  border-radius: 5px;
 }
 
 .post-button {
   display: flex;
   justify-content: center;
+}
+
+.post-list {
+  height: 60vh;
+  overflow: auto;
+}
+
+.post-list,
+.post-item {
+  margin: 5px 0;
+  border-radius: 10px !important;
+}
+
+.post-creator {
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.post-date {
+  text-align: right;
+}
+
+.post-delete-button {
+  margin-left: 5px;
 }

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 // Define userSchema
 const postSchema = new Schema({
-  creator: { type: String, unique: false },
+  creatorId: { type: String, unique: false },
+  creatorUsername: { type: String, unique: false },
   content: { type: String, unique: false },
   created: { type: Date, default: Date.now }
 });

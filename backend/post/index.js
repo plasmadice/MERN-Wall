@@ -26,7 +26,8 @@ router.get("/getposts", (req, res) => {
 router.post("/create", (req, res) => {
   if (req.user) {
     const newPost = new Post({
-      creator: req.user._id,
+      creatorId: req.user._id,
+      creatorUsername: req.body.username,
       content: req.body.content
     });
 
@@ -42,7 +43,7 @@ router.post("/create", (req, res) => {
 });
 
 router.post("/delete", (req, res) => {
-  if (req.user._id == req.body.creator) {
+  if (req.user._id == req.body.creatorId) {
     console.log("matches current user");
     Post.findOneAndDelete({ _id: req.body.postId }, (err, post) => {
       if (err) {

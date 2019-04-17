@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Header from "./components/Header";
-import Home from "./components/Home";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import DisplayLinks from "./components/DisplayLinks";
@@ -22,9 +21,7 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get("/auth/user").then(response => {
-      console.log(response.data);
       if (!!response.data.user) {
-        console.log(`User ${response.data.user.local.username} is logged in`);
         this.setState({
           loggedIn: true,
           user: response.data.user
@@ -91,7 +88,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>This is the main App component</h1>
+        <h1 className="site-header">MERN Wall</h1>
         <Header user={this.state.user} />
         {/* LINKS to our different 'pages' */}
         <DisplayLinks
@@ -104,7 +101,6 @@ class App extends Component {
           path="/"
           render={() => (
             <>
-              <Home user={user} />
               {/* <ul>
                 {posts.map(post => {
                   return (
@@ -144,7 +140,7 @@ class App extends Component {
         />
         <Route exact path="/signup" component={SignupForm} />
         {/* Create new posts */}
-        {loggedIn && <PostForm getPosts={this.getPosts} />}
+        {loggedIn && <PostForm getPosts={this.getPosts} user={user} />}
       </div>
     );
   }

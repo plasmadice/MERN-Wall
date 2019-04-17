@@ -1,9 +1,8 @@
 import React from "react";
-import { ListGroup } from "shards-react";
+import { ListGroup } from "react-bootstrap";
 
 const PostContainer = props => {
-  console.log(props.children);
-  return <ListGroup>{props.children}</ListGroup>;
+  return <ListGroup className="post-list">{props.children}</ListGroup>;
 };
 
 export default PostContainer;

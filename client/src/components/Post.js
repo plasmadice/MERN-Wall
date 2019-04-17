@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { ListGroupItem, Button } from "shards-react";
+import { ListGroupItem, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css";
 
 export default class Post extends Component {
   handleClick = () => {
+    // Removes posts when logged in
     const { removePost } = this.props;
-    const { _id, creator } = this.props.post;
+    const { _id, creatorId } = this.props.post;
 
     axios
       .post("/post/delete", {
-        creator: creator,
+        creatorId: creatorId,
         postId: _id
       })
       .then(response => {
@@ -28,15 +28,21 @@ export default class Post extends Component {
   render() {
     const { post, user } = this.props;
     return (
-      <ListGroupItem>
-        Creator: {post.creator}
-        Content: {post.content}
-        Created: {post.created}
-        {user && post.creator === user._id ? (
-          <Button theme="secondary" onClick={this.handleClick}>
-            Delete
-          </Button>
-        ) : null}
+      <ListGroupItem className="post-item">
+        <p className="post-creator">{post.creatorUsername}</p>
+        <p className="post-content">{post.content}</p>
+        <p className="post-date">
+          {post.created}{" "}
+          {user && post.creatorId === user._id ? (
+            <Button
+              className="post-delete-button"
+              theme="secondary"
+              onClick={this.handleClick}
+            >
+              Delete
+            </Button>
+          ) : null}
+        </p>
       </ListGroupItem>
     );
   }
