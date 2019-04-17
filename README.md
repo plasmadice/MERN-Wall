@@ -8,7 +8,6 @@ To start: Clone this repository and `cd` into the root folder. Run `npm install`
 
 TODO:
 Remove bootstrap link in public/index.html
-SWITCH TO FORMIK for forms
 .toLowerCase() on signup and login
 Error codes on backend for auth issues
 Clear commented code

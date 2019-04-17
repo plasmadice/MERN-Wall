@@ -1,3 +1,10 @@
+#root {
+  background-color: #e6ecf0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
 .login-form-container,
 .signup-form-container,
 .post-container {
