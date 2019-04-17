@@ -27,7 +27,7 @@ export default class PostForm extends Component {
               <Field
                 component="textarea"
                 name="content"
-                placeholder=" Create a post"
+                placeholder="Create a post"
               />
               <ErrorMessage name="text" component="div" />
               <div className="post-button">
