@@ -19,14 +19,15 @@ export default class PostForm extends Component {
               .then(res => {
                 // console.log(res);
                 this.props.getPosts();
+                actions.setSubmitting(false);
               });
           }}
-          render={({ errors, status, touched, isSubmitting }) => (
+          render={({ isSubmitting }) => (
             <Form>
               <Field
                 component="textarea"
                 name="content"
-                placeholder="Create a post"
+                placeholder=" Create a post"
               />
               <ErrorMessage name="text" component="div" />
               <div className="post-button">

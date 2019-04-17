@@ -18,9 +18,9 @@ export default class Post extends Component {
         console.log(response);
         if (!response.data.error) {
           removePost(_id);
-          console.log("post deleted");
+          // console.log("post deleted");
         } else {
-          console.log("error fam");
+          // console.log("Error", response.data.error);
         }
       });
   };
