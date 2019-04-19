@@ -17,9 +17,10 @@ export default class PostForm extends Component {
                 username: user.local.username
               })
               .then(res => {
-                // console.log(res);
+                console.log(actions);
                 this.props.getPosts();
                 actions.setSubmitting(false);
+                values.content = "";
               });
           }}
           render={({ isSubmitting }) => (

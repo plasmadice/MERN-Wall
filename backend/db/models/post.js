@@ -1,12 +1,36 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Date formatting
+function formatDate(date) {
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + " " + monthNames[monthIndex] + " " + year;
+}
+
 // Define userSchema
 const postSchema = new Schema({
   creatorId: { type: String, unique: false },
   creatorUsername: { type: String, unique: false },
   content: { type: String, unique: false },
-  created: { type: Date, default: Date.now }
+  created: { type: String, default: formatDate(new Date()) }
 });
 
 // Define schema methods

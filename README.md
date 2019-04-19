@@ -6,12 +6,12 @@ This app uses MongoDB, Express, React, and Node to put together a simple post wa
 
 To start: Clone this repository and `cd` into the root folder. Run `npm install` in the root, backend, and client folders to get all of the required dependencies for each section. Then run `npm start` in the root folder
 
-TODO:
-.toLowerCase() on signup and login && validate user emails and passwords
-Error codes on backend for auth issues
+# Project Overview
 
-format posts to be more readable
+This is my first truly Full-Stack app. It was started some time ago so it does not use React's most recent changes (Hooks, etc).
 
-format post dates
+## How it Works // Getting Started
 
-send users emails
+TODO: Add this info
+
+### Other information
