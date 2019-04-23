@@ -14,7 +14,6 @@ const session = require("express-session");
 MongoStore = require("connect-mongo")(session);
 const dbConnection = require("./db"); // loads our connection to the mongo database
 
-const API_PORT = process.env.PORT;
 const app = express();
 
 // TODO: Remove ?
@@ -102,8 +101,16 @@ app.use(function(err, req, res, next) {
   res.status(500);
 });
 
-// launch our backend into a port
-if (API_PORT == null || API_PORT == "") {
-  API_PORT = 8000;
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
-app.listen(API_PORT, () => console.log(`Listening on port: ${API_PORT}`));
+
+const port = process.env.PORT || 5000;
+// launch our backend into a port
+
+app.listen(port, () => console.log(`Listening on port: ${port}`));
