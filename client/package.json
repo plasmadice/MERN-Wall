@@ -23,7 +23,7 @@
     "node": "^11.5.0",
     "npm": "^6.7.0"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:8000",
   "eslintConfig": {
     "extends": "react-app"
   },
