@@ -106,4 +106,4 @@ app.use(function(err, req, res, next) {
 if (API_PORT == null || API_PORT == "") {
   API_PORT = 8000;
 }
-app.listen(port, () => console.log(`Listening on port: ${API_PORT}`));
+app.listen(API_PORT, () => console.log(`Listening on port: ${API_PORT}`));
