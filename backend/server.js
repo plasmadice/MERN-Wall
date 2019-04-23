@@ -14,7 +14,7 @@ const session = require("express-session");
 MongoStore = require("connect-mongo")(session);
 const dbConnection = require("./db"); // loads our connection to the mongo database
 
-const API_PORT = 3001;
+const API_PORT = 8080;
 const app = express();
 
 // TODO: Remove ?
