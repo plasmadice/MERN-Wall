@@ -83,6 +83,9 @@
   border-radius: 10px !important;
 }
 
+.post-content {
+  word-wrap: break-word;
+}
 .post-creator {
   font-weight: bold;
   text-align: center;

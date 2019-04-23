@@ -88,7 +88,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1 className="site-header">MERN Wall</h1>
+        <h1 className="site-header">~MERN Post Wall~</h1>
         <Header user={this.state.user} />
         {/* LINKS to our different 'pages' */}
         <DisplayLinks

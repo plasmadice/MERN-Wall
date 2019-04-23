@@ -47,7 +47,7 @@ router.post(
   "/login",
   function(req, res, next) {
     console.log(req.body);
-    console.log("================");
+    console.log(`User ${req.body.username} attempting login.`);
     next();
   },
   passport.authenticate("local"),

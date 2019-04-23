@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd backend && nodemon server.js\" \"cd client && npm start\"",
+    "start2": "concurrently \"cd backend && nodemon server.js\" \"cd client && npm start\"",
+    "start": "node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

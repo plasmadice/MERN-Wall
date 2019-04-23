@@ -39,11 +39,11 @@ class LoginForm extends Component {
         <div className="login-form-container">
           <Form className="form-controls">
             <Form.Group>
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type="text"
                 name="username"
-                placeholder="enter username"
+                placeholder="enter email address"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
