@@ -14,7 +14,7 @@ const session = require("express-session");
 MongoStore = require("connect-mongo")(session);
 const dbConnection = require("./db"); // loads our connection to the mongo database
 
-const API_PORT = 3001;
+const API_PORT = process.env.PORT;
 const app = express();
 
 // TODO: Remove ?
@@ -103,4 +103,7 @@ app.use(function(err, req, res, next) {
 });
 
 // launch our backend into a port
-app.listen(API_PORT, () => console.log(`Listening on port: ${API_PORT}`));
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port, () => console.log(`Listening on port: ${API_PORT}`));
