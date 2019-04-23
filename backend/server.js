@@ -103,7 +103,7 @@ app.use(function(err, req, res, next) {
 });
 
 // launch our backend into a port
-if (port == null || port == "") {
-  port = 8000;
+if (API_PORT == null || API_PORT == "") {
+  API_PORT = 8000;
 }
 app.listen(port, () => console.log(`Listening on port: ${API_PORT}`));
